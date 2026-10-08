@@ -23,7 +23,7 @@
     "url": "https://github.com/kudawasama/ContextMap/issues"
   },
   "pi": {
-    "image": "https://raw.githubusercontent.com/kudawasama/pi-contextmap/main/assets/preview.png",
+    "image": "https://raw.githubusercontent.com/kudawasama/pi-contextmap/master/assets/preview.png",
     "extensions": [
       "./extensions/contextmap-mcp.ts"
     ],

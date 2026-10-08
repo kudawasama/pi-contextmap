@@ -1,6 +1,6 @@
 # @kudawa/pi-contextmap — ContextMap IA para pi
 
-![ContextMap IA para pi](https://raw.githubusercontent.com/kudawasama/pi-contextmap/main/assets/preview.png)
+![ContextMap IA para pi](https://raw.githubusercontent.com/kudawasama/pi-contextmap/master/assets/preview.png)
 
 Paquete de [pi](https://pi.dev) que trae **ContextMap IA** a tus sesiones:
 memoria viva del proyecto (brief para agentes + vault de Obsidian), **Second
