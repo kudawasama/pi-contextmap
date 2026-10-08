@@ -1,0 +1,50 @@
+{
+  "name": "@kudawa/pi-contextmap",
+  "version": "1.0.1",
+  "description": "ContextMap IA para pi: memoria viva del proyecto (brief para agentes, vault de Obsidian y Second Brain) con su servidor MCP listo para usar.",
+  "type": "module",
+  "keywords": [
+    "pi-package",
+    "contextmap",
+    "memoria",
+    "obsidian",
+    "mcp",
+    "second-brain",
+    "context"
+  ],
+  "license": "MIT",
+  "author": "kudawasama",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kudawasama/ContextMap.git"
+  },
+  "homepage": "https://github.com/kudawasama/ContextMap",
+  "bugs": {
+    "url": "https://github.com/kudawasama/ContextMap/issues"
+  },
+  "pi": {
+    "image": "https://raw.githubusercontent.com/kudawasama/pi-contextmap/main/assets/preview.png",
+    "extensions": [
+      "./extensions/contextmap-mcp.ts"
+    ],
+    "skills": [
+      "./skills/contextmap"
+    ],
+    "prompts": [
+      "./prompts/*.md"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*"
+  },
+  "files": [
+    "extensions",
+    "skills",
+    "prompts",
+    "README.md",
+    "LICENSE"
+  ]
+}

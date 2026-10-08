@@ -1,0 +1,56 @@
+name: 📦 Publish to npm
+
+# Publica el paquete en npm usando **Trusted Publishing (OIDC)**: sin tokens,
+# sin OTP y con proveniencia firmada. Requiere que el paquete tenga configurado
+# este repo como Trusted Publisher en npmjs.com
+# (Package → Settings → Trusted Publisher → GitHub Actions).
+#
+# Publicar una versión nueva:
+#   1. Sube la versión en package.json (p. ej. 1.0.1).
+#   2. git commit -am "chore: v1.0.1" && git tag v1.0.1 && git push --follow-tags
+
+on:
+  push:
+    tags: ["v*"]
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write # obligatorio para el OIDC de npm
+
+jobs:
+  npm-publish:
+    name: Publicar en npm (OIDC, sin tokens)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      - name: npm >= 11.5.1 (requisito de Trusted Publishing)
+        run: npm install -g npm@latest
+
+      - name: Verificar que el tag coincide con package.json
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          PKG=$(node -p "require('./package.json').version")
+          TAG="${GITHUB_REF_NAME#v}"
+          if [ "$PKG" != "$TAG" ]; then
+            echo "::error::El tag ($TAG) no coincide con la versión de package.json ($PKG)"
+            exit 1
+          fi
+
+      - name: Paquete a publicar (resumen)
+        run: |
+          node -e "const p=require('./package.json');console.log(p.name+'@'+p.version)"
+          npm pack --dry-run
+
+      - name: Publicar en npm
+        run: npm publish
