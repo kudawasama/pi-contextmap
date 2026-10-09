@@ -30,6 +30,7 @@ export default function (pi: ExtensionAPI) {
 		toolExposure: {
 			context: "direct",
 			context_diff: "direct",
+			secret_list: "direct",
 			personal_panorama: "direct",
 			personal_query: "direct",
 			knowledge_wiki_ask: "direct",
