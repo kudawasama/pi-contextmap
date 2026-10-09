@@ -40,10 +40,16 @@ export default function (pi: ExtensionAPI) {
 	// ruidosos) y se explica exactamente como instalarlo.
 	pi.on("session_start", async (_event, ctx) => {
 		const { code } = await pi.exec("ctxmap", ["--version"]);
-		if (code === 0) return;
-		pi.unregisterMcpServer("contextmap");
-		if (ctx.hasUI) {
-			ctx.ui.notify(INSTALACION, "warning");
+		if (code !== 0) {
+			pi.unregisterMcpServer("contextmap");
+			if (ctx.hasUI) {
+				ctx.ui.notify(INSTALACION, "warning");
+			}
+			return;
 		}
+		// Revision idempotente del ecosistema al iniciar: pone al dia SOLO las
+		// reglas/skills propias de ContextMap (si ya estan al dia, no cambia nada).
+		// NO bloquea el arranque; si falla, se ignora.
+		void pi.exec("ctxmap", ["adapt", "--revisar", "--quiet"]).catch(() => {});
 	});
 }
