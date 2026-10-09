@@ -25,10 +25,11 @@ export default function (pi: ExtensionAPI) {
 		args: ["mcp"],
 		description: DESCRIPCION,
 		// Lectura de memoria: siempre visible (bajo coste, alto valor).
-		// El resto de herramientas (25) quedan en codemode, donde el modelo las
-		// alcanza cuando las necesita sin llenar el contexto.
+		// El resto de herramientas quedan en codemode, donde el modelo las alcanza
+		// cuando las necesita sin llenar el contexto.
 		toolExposure: {
 			context: "direct",
+			context_diff: "direct",
 			personal_panorama: "direct",
 			personal_query: "direct",
 			knowledge_wiki_ask: "direct",

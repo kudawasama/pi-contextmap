@@ -36,7 +36,7 @@ Desde una sesión abierta, ejecuta `/reload` para que pi lo cargue.
 
 | Recurso | Nombre | Para qué |
 |---|---|---|
-| Extensión | `contextmap` (MCP) | Registra el servidor MCP con 29 herramientas y avisa si falta el CLI |
+| Extensión | `contextmap` (MCP) | Registra el servidor MCP con 30 herramientas y avisa si falta el CLI |
 | Skill | `/skill:contextmap` | Protocolo: cómo ponerse en contexto, actualizar sin ensuciar y mantener la memoria viva |
 | Prompt | `/contextmap-contexto` | Poner el agente en contexto (brief + pendientes reales) |
 | Prompt | `/contextmap-cierre` | Cerrar sesión: refresh, verificar, documentar y resumir |
@@ -44,7 +44,8 @@ Desde una sesión abierta, ejecuta `/reload` para que pi lo cargue.
 
 ### Herramientas MCP siempre visibles
 
-- `mcp__contextmap__context` — leer el brief ejecutivo del proyecto.
+- `mcp__contextmap__context` — leer el brief ejecutivo del proyecto (capa mínima).
+- `mcp__contextmap__context_diff` — al volver a una sesión: **solo lo que cambió** desde un digest.
 - `mcp__contextmap__personal_panorama` — semáforo de todos tus proyectos.
 - `mcp__contextmap__personal_query` — buscar en lecciones y decisiones.
 - `mcp__contextmap__knowledge_wiki_ask` — preguntar al Second Brain con citas.
